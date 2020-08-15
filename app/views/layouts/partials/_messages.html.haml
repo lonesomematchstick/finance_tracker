@@ -1,0 +1,7 @@
+.container
+  - flash.each do |name, msg|
+    - msg_type = (name == 'alert') ? %w(alert-danger) : %w(alert-success)
+    .alert.alert-dismissible.fade.show.mb-0{ class: msg_type, role: 'alert' }
+      = msg
+      %button.close{type: 'button', data: { dismiss: 'alert' } }
+        %span{ 'aria-hidden' => true } &times;

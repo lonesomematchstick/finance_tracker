@@ -9,7 +9,6 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body.d-flex.flex-column
     = render "layouts/partials/navbar"
-    .container
-      %p.notice= notice
-      %p.alert= alert
+    #page-content.container.mt-5
+      = render "layouts/partials/messages"
       = yield
