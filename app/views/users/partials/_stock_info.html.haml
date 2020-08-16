@@ -1,0 +1,11 @@
+.row
+  .col-sm-6
+    = render partial: "layouts/partials/messages"
+
+    - if @stock
+      .card.card-header
+        .symbol <strong>Symbol:</strong> #{@stock.ticker.upcase}
+        .name <strong>Name:</strong> #{@stock.name}
+        .price <strong>Last Price:</strong> #{number_to_currency(@stock.last_price, prcision: 2)}
+
+    

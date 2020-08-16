@@ -31,11 +31,19 @@ gem 'haml'
 gem "haml-rails", "~> 2.0"
 gem 'html2haml'
 
+# Authentication
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 
+# Javascript gems
+gem 'jquery-rails'
+
+gem 'font-awesome-rails'
+
 # api
 gem 'iex-ruby-client'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +59,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'annotate'
 end
 
 group :test do

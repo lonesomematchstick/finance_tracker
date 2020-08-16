@@ -4,9 +4,9 @@ class Stock < ApplicationRecord
     ticker = ticker_symbol.to_s.upcase
     client = authenticate
     begin
-      client.price(ticker_symbol)
+      new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
     rescue NameError => e
-      puts "Could not find an associated stock with the ticker: #{ticker_symbol}."
+      return nil
     end
   end
 

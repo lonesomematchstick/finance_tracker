@@ -1,0 +1,14 @@
+%h1 My Portfolio
+
+.search-area
+  %h3 Search Stock Prices
+  .form
+    = form_tag search_stock_path, remote: true, method: :get do
+      .form-group.row
+        .col-sm-6.no-right-padding
+          = text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: %w(form-control form-control-large)
+        .col-sm.3.no-left-padding
+          = button_tag type: :submit, class: %w(btn btn-success) do
+            %i.fas.fa-search
+#stock_results
+
