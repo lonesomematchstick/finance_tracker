@@ -11,5 +11,8 @@
                 %tr
                   %td <strong>Name:</strong> #{friend.full_name}
                   %td <strong>Email:</strong> #{friend.email}
-                  %td.mr-1= link_to "View Profile", '#', class: %w(btn btn-sm btn-info friend-profile)
-                  %td= link_to "Follow Friend?", '#', method: :post, class: %w(btn btn-sm btn-success)
+                  %td.mr-1= link_to "View Profile", user_path(friend), class: %w(btn btn-sm btn-info friend-profile)
+                  - if current_user.friends_with?(friend)
+                    %td.badge.badge-secondary= "Already following"
+                  - else
+                    %td= link_to "Follow Friend?", friendships_path(friend: friend), method: :post, class: %w(btn btn-sm btn-success)

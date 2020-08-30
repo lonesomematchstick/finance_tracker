@@ -27,6 +27,7 @@ class User < ApplicationRecord
     "Anonymous"
   end
 
+  # match any users with text provided in search field
   def self.matches(param)
     results = []
     %w(email first_name last_name).each do |field|
@@ -35,8 +36,13 @@ class User < ApplicationRecord
     results.flatten.uniq.present? ? results.flatten.uniq : nil
   end
 
+  # remove self from list of matches
   def except_current_user(users)
     users.reject{ |user| user.id == self.id }
+  end
+
+  def friends_with?(friend)
+    friends.include?(friend)
   end
 
 end

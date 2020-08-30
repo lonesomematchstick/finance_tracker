@@ -1,0 +1,18 @@
+%h1 #{@user.full_name}'s Profile Page
+
+.row
+  .col-md-9
+    .card.card-header
+      %table
+        %tbody
+          %tr
+            %td <strong>Name:</strong> #{@user.full_name}
+            %td <strong>Email:</strong> #{@user.email}
+
+            - if current_user.friends_with?(@user)
+              %td.badge.badge-secondary= "Already following"
+            - else
+              %td= link_to "Follow Friend?", friendships_path(friend: @user), method: :post, class: %w(btn btn-sm btn-success)
+
+- if @stocks.present?
+  = render partial: 'users/partials/user_stock_table', locals: {stocks: @user.stocks}

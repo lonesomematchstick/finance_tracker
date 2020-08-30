@@ -1,19 +1,15 @@
 class FriendshipsController < ApplicationController
 
   def create
-    # stock = Stock.check_db(params[:stock])
+    friend = User.find(params[:friend])
 
-    # if stock.blank?
-    #   stock = Stock.new_lookup(params[:stock])
-    #   if stock.name.blank?
-    #     stock.name = "n/a"
-    #   end
-    #   stock.save
-    # end
-
-    # @user_stock = UserStock.create(user: current_user, stock: stock)
-    # flash[:notice] = "#{stock.name} was successfully added to your portfolio."
-    # redirect_to my_portfolio_path
+    current_user.friendships.build(friend_id: friend.id)
+    if current_user.save
+      flash[:notice] = "You are now following #{friend.first_name}."
+    else
+      flash[:alert] = "Oops! Something went wrong trying to track #{friend.first_name}."
+    end
+    redirect_to my_friends_path
   end
 
   def destroy
