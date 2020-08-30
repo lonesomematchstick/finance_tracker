@@ -1,0 +1,15 @@
+.results-block.friend
+  = render partial: "layouts/partials/messages"
+
+  - if @friends
+    .row
+      .col-md-9
+        .card.card-header
+          %table
+            %tbody
+              - @friends.each do |friend|
+                %tr
+                  %td <strong>Name:</strong> #{friend.full_name}
+                  %td <strong>Email:</strong> #{friend.email}
+                  %td.mr-1= link_to "View Profile", '#', class: %w(btn btn-sm btn-info friend-profile)
+                  %td= link_to "Follow Friend?", '#', method: :post, class: %w(btn btn-sm btn-success)

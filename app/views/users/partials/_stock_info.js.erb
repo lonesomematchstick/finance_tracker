@@ -1,1 +1,6 @@
-document.querySelector('#stock_results').innerHTML = "<%= j render 'users/partials/stock_info.html.haml'%>"
+if ($('.stock').length == 0) {
+  $('#stock_results').append("<%= j render 'users/partials/stock_info.html.haml'%>")
+} else {
+  $('.stock').remove();
+  $('#stock_results').append("<%= j render 'users/partials/stock_info.html.haml'%>")
+}

@@ -12,3 +12,7 @@
             %i.fas.fa-search
 #stock_results
 
+
+#user_stocks
+  - if @stocks.present?
+    = render partial: 'users/partials/user_stock_table', locals: {stocks: @stocks}

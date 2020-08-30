@@ -1,0 +1,19 @@
+%h1 Friends
+
+.search-area
+  %h3 Search Friends
+  .form
+    = form_tag search_friends_path, remote: true, method: :get do
+      .form-group.row
+        .col-sm-6.no-right-padding
+          = text_field_tag :friend, params[:friend], placeholder: "Name or Email", autofocus: true, class: %w(form-control form-control-large)
+        .col-sm.3.no-left-padding
+          = button_tag type: :submit, class: %w(btn btn-success) do
+            %i.fas.fa-search
+#friend_results
+
+#friends
+  - if @friends.present?
+    = render partial: 'users/partials/friends_table', locals: {friends: @friends}
+  - else
+    You are not tracking any friends
