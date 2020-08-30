@@ -26,5 +26,8 @@ require("jquery")
 
 import "bootstrap"
 import 'bootstrap/dist/js/bootstrap';
-import '../src/font-awesome.js';
+import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+import '@fortawesome/fontawesome-free/scss/regular.scss';
+import '@fortawesome/fontawesome-free/scss/solid.scss';
+// import '../src/font-awesome.js';
 
