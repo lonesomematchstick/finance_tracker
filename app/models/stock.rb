@@ -25,4 +25,16 @@ class Stock < ApplicationRecord
   def self.check_db(ticker_symbol)
     where(ticker: ticker_symbol).first
   end
+
+  def self.update_prices
+    current_prices = {}
+    client = authenticate
+    all.each do |stock|
+      current_prices[stock.ticker] = client.price(stock.ticker)
+    end
+    find_each do |stock|
+      stock.update_attribute(:last_price, current_prices[stock.ticker])
+    end
+    self.all
+  end
 end

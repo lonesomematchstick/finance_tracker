@@ -1,0 +1,3 @@
+console.log("updating prices...");
+$('#my-stocks').remove();
+$('#user_stocks').append("<%= j render 'stocks/partials/refresh_prices.html.haml'%>")

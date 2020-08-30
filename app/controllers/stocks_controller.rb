@@ -22,4 +22,17 @@ class StocksController < ApplicationController
     end
   end # search
 
+  def refresh_prices
+    
+    if Stock.any?
+      @updated_stocks = Stock.update_prices
+      Rails.logger.debug "updated stocks: #{@updated_stocks.inspect}"
+      respond_to do |format|
+        format.js { render partial: 'stocks/partials/refresh_prices', locals: {stocks: @updated_stocks} }
+      end
+
+    end
+  end
+
+
 end
